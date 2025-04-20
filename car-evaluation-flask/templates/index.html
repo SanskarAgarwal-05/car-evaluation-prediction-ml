@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Evaluation Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+            font-weight: 500;
+        }
+
+        select, input[type="submit"] {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #1e90ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Car Evaluation Predictor</h2>
+        <form method="POST" action="/predict">
+            <label>Buying:</label>
+            <select name="buying">
+                <option value="low">low</option>
+                <option value="med">med</option>
+                <option value="high">high</option>
+                <option value="vhigh">vhigh</option>
+            </select>
+
+            <label>Maintenance:</label>
+            <select name="maint">
+                <option value="low">low</option>
+                <option value="med">med</option>
+                <option value="high">high</option>
+                <option value="vhigh">vhigh</option>
+            </select>
+
+            <label>Doors:</label>
+            <select name="doors">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5more">5more</option>
+            </select>
+
+            <label>Persons:</label>
+            <select name="persons">
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="more">more</option>
+            </select>
+
+            <label>Luggage Boot:</label>
+            <select name="lug_boot">
+                <option value="small">small</option>
+                <option value="med">med</option>
+                <option value="big">big</option>
+            </select>
+
+            <label>Safety:</label>
+            <select name="safety">
+                <option value="low">low</option>
+                <option value="med">med</option>
+                <option value="high">high</option>
+            </select>
+
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if prediction %}
+            <div class="result">{{ prediction }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
